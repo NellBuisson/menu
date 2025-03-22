@@ -27,7 +27,7 @@ class Plat :
         return self.nbrPers
     
     def Ingredients(self) :
-        return self.ingredients.items()
+        return self.ingredients
     
     def Afficher(self) :
         print(f" Nom : {self.nom} \n Pour : {self.nbrPers} personnes \n Ingrédients :")

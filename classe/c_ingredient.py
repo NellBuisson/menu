@@ -8,6 +8,9 @@ class ListeIngredients :
             self.liste[ing] = n
         else : 
             print("Cet ingrédient est déjà présent")
+    
+    def Ingredients(self) :
+        return 
 
     def NbrEnVente(self, ing) :
         if self.liste.get(ing, -1) != -1 :
