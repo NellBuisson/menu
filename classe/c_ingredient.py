@@ -1,17 +1,20 @@
-class Ingredient :
-    def __init__ (self, nom, nbr) :
-        self.nom = nom
-        self.nbrVente = nbr
-        
-    def NbrEnVente(self, n) :
-        self.nbrVente = n
+class ListeIngredients :
+    def __init__ (self) :
+        self.liste = {}
 
-    def Afficher(self) :
-        print(f" Nom : {self.nom} \n Quantité en Vente : {self.nbrVente}")
-    
-    def Nom(self) :
-        return self.nom
-    
-    def QuelleVente(self) :
-        return self.nbrVente
+    def AjouterIngredient(self, ing, n) :
+        nouv = self.liste.get(ing, -1)
+        if nouv != -1 :
+            self.liste[ing] = n
+        else : 
+            print("Cet ingrédient est déjà présent")
+
+    def NbrEnVente(self, ing) :
+        if self.liste.get(ing, -1) != -1 :
+            return self.liste[ing] 
+
+    def AfficherListe(self) :
+        for cle, valeur in self.liste.items() :
+            print(f" Ingrédient : {cle} \n Quantité par paquet : {valeur}")
+
 
