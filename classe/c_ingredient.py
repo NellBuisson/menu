@@ -16,5 +16,12 @@ class ListeIngredients :
     def AfficherListe(self) :
         for cle, valeur in self.liste.items() :
             print(f" Ingrédient : {cle} \n Quantité par paquet : {valeur}")
+    
+    def RetirerIngredient(self, ing) :
+        if self.liste.get(ing, -1) != -1 :
+            del self.liste[ing]
+
+    def Liste(self) :
+        return self.liste
 
 
