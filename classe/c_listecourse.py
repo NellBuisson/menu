@@ -1,5 +1,3 @@
-from c_menu import *
-
 class ListeCourse : 
     def __init__(self, nom):
         self.nom = nom
