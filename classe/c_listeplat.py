@@ -34,6 +34,12 @@ class ListePlats :
                 if self.plats[num_plat].Nom() == nom_plat :
                     self.plats[num_plat].AjouterIngredient(ingredient, quantite)
 
+    def RetirerIngredientPlat(self, nom_plat, ingredient) :
+         if self.PlatPresent(nom_plat) :
+            for num_plat in range(self.nbrPlats - 1) :
+                if self.plats[num_plat].Nom() == nom_plat :
+                    self.plats[num_plat].RetirerIngredient(ingredient)
+
     def AfficherPlats(self) :
         if self.nbrPlats != 0 :
             print("La liste contients les plats :", end='')
@@ -62,8 +68,8 @@ class ListePlats :
             for num_plat in range(self.nbrPlats) :
                 if self.plats[num_plat].Nom() == nom_plat :
                     return self.plats[num_plat].Ingredients()
-                    
+                     
 
-     
-    ##Faire ajouter ingrédient et je sais plus
+
+    
 
