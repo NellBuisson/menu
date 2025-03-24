@@ -63,7 +63,7 @@ class ListePlats :
                     print(quantite_ingredient, nom_ingredient)
 
 
-    def IngredientPlat(self, nom_plat) :
+    def IngredientsPlat(self, nom_plat) :
         if self.PlatPresent(nom_plat) :
             for num_plat in range(self.nbrPlats) :
                 if self.plats[num_plat].Nom() == nom_plat :
