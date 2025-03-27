@@ -1,15 +1,15 @@
 class MenuJour :
     def __init__ (self, j, p) :
-        self.jour = j.lower()
+        self.jour = j
         self.semaine = 1
-        self.plat = p.lower()
+        self.plat = p
         self.nbrPersonne = 2
 
     def ModifiierJour(self, jour) :
-        self.jour = jour.lower()
+        self.jour = jour
     
     def ModifierPlat(self, plat) :
-        self.plat = plat.lower()
+        self.plat = plat
 
     def ModifierNbrPersonne(self, nbr) :
         self.nbrPersonne = nbr

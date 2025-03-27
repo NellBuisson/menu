@@ -1,15 +1,13 @@
 from classe.c_listecourse import *
 from classe.c_menu import *
 from classe.c_listeplat import *
-from classe.c_menujour import *
-from classe.c_plat import *
 
 
 def RemplirCourseAvecMenu(menu, liste_de_course, liste_plat) :
     for plat in menu.Plats() :
-        for ingredient_et_quantite in liste_plat.IngredientsPlat(plat.lower()) :
+        for ingredient_et_quantite in liste_plat.IngredientsPlat(plat) :
             for ingredient, quantite in ingredient_et_quantite :
-                liste_de_course.AjouterElement(ingredient.lower(), quantite)
+                liste_de_course.AjouterElement(ingredient, quantite)
 
     liste_de_course.Afficher()
 
