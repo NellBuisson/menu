@@ -83,7 +83,7 @@ class Menu :
                 self.listeRepas.remove(menu)   
                 self.nbrRepas -= 1        
 
-    def Repas(self) :
+    def ListeRepas(self) :
         return self.listeRepas
 
     def RepasManquant(self) :
