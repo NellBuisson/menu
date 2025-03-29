@@ -6,15 +6,15 @@ from classe.c_listeplat import *
 def RemplirCourseAvecMenu(menu, liste_de_course, liste_plat) :   
     for repas in menu.ListeRepas() :
         plat, nbr_pers = repas.Repas()
-        
         for ingredient_et_quantite in liste_plat.IngredientsPlat(plat) :
             
-            print(ingredient_et_quantite)
+            ingredient, quantite = ingredient_et_quantite
             
-            for ingredient, quantite in ingredient_et_quantite :
-                if nbr_pers != 2 :
-                    quantite = nbr_pers*quantite/2
-                liste_de_course.AjouterElement(ingredient, quantite)
+            #si le nombre de personnes dans le menu n'est pas le même que celui prévu dans la recette, on adapte les quantites
+            if nbr_pers != 2 :
+                quantite = nbr_pers*quantite/2
+                
+            liste_de_course.AjouterElement(ingredient, quantite)
 
     liste_de_course.Afficher()
 
