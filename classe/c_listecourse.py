@@ -25,7 +25,8 @@ class ListeCourse :
     
     def Afficher(self) :
         print(f"La liste {self.nom} contient :")
-        for element, quantite in self.liste.keys() :
+
+        for element, quantite in self.liste.items() :
             print(quantite, element)
 
     def DonneListe(self) :
