@@ -3,38 +3,37 @@ class MenuJour :
         self.jour = j
         self.semaine = 1
         self.plat = p
-        self.nbrPersonne = 2
+        self.nbr_pers = 2
 
-    def ModifiierJour(self, jour) :
+    def modifier_jour(self, jour) :
         self.jour = jour
     
-    def ModifierPlat(self, plat) :
+    def modifier_plat(self, plat) :
         self.plat = plat
 
-    def ModifierNbrPersonne(self, nbr) :
-        self.nbrPersonne = nbr
+    def modifier_nbr_personnes(self, nbr) :
+        self.nbr_pers = nbr
 
-    def ModifierSemaine(self, s) :
+    def modifier_semaine(self, s) :
         self.semaine = s
     
-    def Afficher(self) :
-        print(f"{self.jour} de la semaine {self.semaine} : {self.plat} pour {self.nbrPersonne} personne.s.")
+    def afficher(self) :
+        print(f"{self.jour} de la semaine {self.semaine} : {self.plat} pour {self.nbr_pers} personne.s.")
 
-    def Contenu(self) :
-        return (self.jour, self.semaine, self.plat, self.nbrPersonne)
+    def donner_menu(self) :
+        return (self.jour, self.semaine, self.plat, self.nbr_pers)
     
-    def Date(self) :
+    def donner_date(self) :
         return (self.jour, self.semaine)
     
-    def Jour(self) :
+    def donner_jour(self) :
         return self.jour
     
-    def Semaine(self) :
+    def donner_semaine(self) :
         return self.semaine
     
-    def Repas(self) :
-        return (self.plat, self.nbrPersonne)
+    def donner_repas(self) :
+        return (self.plat, self.nbr_pers)
     
-    def Plat(self) :
+    def donner_plat(self) :
         return self.plat
-

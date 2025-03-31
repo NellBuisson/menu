@@ -3,32 +3,32 @@ class ListeCourse :
         self.nom = nom
         self.liste = {}
 
-    def Possede(self, element) :
+    def posseder(self, element) :
         return element in self.liste.keys()
 
-    def AjouterElement(self, element, quantite) :
-        if self.Possede(element) :
+    def ajouter_element(self, element, quantite) :
+        if self.posseder(element) :
             self.liste[element] += quantite
         else : 
             self.liste[element] = quantite
     
-    def ModQuantite(self, element, quantite) :
-        if self.Possede(element) :
+    def modifier_quantite(self, element, quantite) :
+        if self.posseder(element) :
             self.liste[element] = quantite
 
-    def RetirerElement(self, element) :
-        if self.Possede(element) :
+    def retirer_element(self, element) :
+        if self.posseder(element) :
             del self.liste[element]
 
-    def Nom(self) :
+    def donner_nom(self) :
         return self.nom
     
-    def Afficher(self) :
+    def afficher(self) :
         print(f"La liste {self.nom} contient :")
 
         for element, quantite in self.liste.items() :
             print(quantite, element)
 
-    def DonneListe(self) :
+    def donne_liste(self) :
         return self.liste.items()
         

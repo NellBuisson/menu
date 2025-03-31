@@ -1,37 +1,37 @@
 class Plat : 
     def __init__(self, nom, diff, ingredient):
-        self.nom = nom.lower()
+        self.nom = nom
         self.ingredients = ingredient
-        self.nbrPers = 2
+        self.nbr_pers = 2
         self.difficulte = diff
     
-    def AjouterIngredient(self, ingredient, quant) :
+    def ajouter_ingredient(self, ingredient, quant) :
         self.ingredients[ingredient] = quant
     
-    def ModQuantiteIng(self, ing, quant) :
+    def modifier_quantite_ingredient(self, ing, quant) :
         if ing in self.ingredients.keys() :
             self.ingredients[ing] = quant
         else : 
             print("Cet ingrédient n'est pas dans la liste des ingrédients")
 
-    def RetirerIngredient(self, ingredient) :
+    def retirer_ingredient(self, ingredient) :
         if ingredient in self.ingredients.keys() :
             del self.ingredients[ingredient]
 
-    def Nom(self) :
+    def donner_nom(self) :
         return self.nom
 
-    def CmbPers(self) :
-        return self.nbrPers
+    def combien_de_pers(self) :
+        return self.nbr_pers
     
-    def Ingredients(self) :
+    def donner_ingredients(self) :
         return self.ingredients.items()
     
-    def Difficulte(self) :
+    def donner_difficulte(self) :
         return self.difficulte
     
-    def Afficher(self) :
-        print(f" Nom : {self.nom} \n Pour : {self.nbrPers} personnes \n Difficulté : {self.difficulte} Ingrédients :")
+    def afficher(self) :
+        print(f" Nom : {self.nom} \n Pour : {self.nbr_pers} personnes \n Difficulté : {self.difficulte} Ingrédients :")
         for cle, valeur in self.ingredients.items() :
             print(cle, valeur)
     
@@ -40,72 +40,72 @@ class Plat :
 class ListePlats :
     def __init__(self):
         self.plats = []
-        self.nbrPlats = 0
+        self.nbr_plats = 0
 
-    def PlatPresent(self, nom_plat) :
-        if self.nbrPlats != 0 :
+    def plat_present(self, nom_plat) :
+        if self.nbr_plats != 0 :
             for plat in self.plats :
-                if plat.Nom() == nom_plat :
+                if plat.donner_nom() == nom_plat :
                     return True
         return False 
     
-    def AjouterPlat(self, nom, ingredients) :
-        if not self.PlatPresent(nom) :
+    def ajouter_plat(self, nom, ingredients) :
+        if not self.plat_present(nom) :
             nouvPlat = Plat(nom, ingredients)
             self.plats.append(nouvPlat)
-            self.nbrPlats += 1
+            self.nbr_plats += 1
 
-    def AjouterPlatExistant(self, plat) :
+    def ajouter_plat_existant(self, plat) :
         if plat not in self.plats :
             self.plats.append(plat)
-            self.nbrPlats += 1
+            self.nbr_plats += 1
 
-    def RetirerPlat(self, nom_plat) :
-        if self.PlatPresent(nom_plat) :
-            for num_plat in range(self.nbrPlats - 1) :
-                if self.plats[num_plat].Nom() == nom_plat :
+    def retirer_plat(self, nom_plat) :
+        if self.plat_present(nom_plat) :
+            for num_plat in range(self.nbr_plats - 1) :
+                if self.plats[num_plat].donner_nom() == nom_plat :
                     del self.plats[num_plat]
 
-    def AjouterIngredientPlat(self, nom_plat, ingredient, quantite) :
-        if self.PlatPresent(nom_plat) :
-            for num_plat in range(self.nbrPlats - 1) :
-                if self.plats[num_plat].Nom() == nom_plat :
-                    self.plats[num_plat].AjouterIngredient(ingredient, quantite)
+    def ajouter_ingredient_plat(self, nom_plat, ingredient, quantite) :
+        if self.plat_present(nom_plat) :
+            for num_plat in range(self.nbr_plats - 1) :
+                if self.plats[num_plat].donner_nom() == nom_plat :
+                    self.plats[num_plat].ajouter_ingredient(ingredient, quantite)
 
-    def RetirerIngredientPlat(self, nom_plat, ingredient) :
-         if self.PlatPresent(nom_plat) :
-            for num_plat in range(self.nbrPlats - 1) :
-                if self.plats[num_plat].Nom() == nom_plat :
-                    self.plats[num_plat].RetirerIngredient(ingredient)
+    def retirer_ingredient_plat(self, nom_plat, ingredient) :
+         if self.plat_present(nom_plat) :
+            for num_plat in range(self.nbr_plats - 1) :
+                if self.plats[num_plat].donner_nom() == nom_plat :
+                    self.plats[num_plat].retirer_ingredient(ingredient)
 
-    def AfficherPlats(self) :
-        if self.nbrPlats != 0 :
+    def afficher_plats(self) :
+        if self.nbr_plats != 0 :
             print("La liste contients les plats :", end='')
             for plat in self.plats :
-                print(f"{plat.Nom()}, ", end='')
+                print(f"{plat.donner_nom()}, ", end='')
 
-    def AfficherPlatCompletSpecifique(self, nom_plat) :
-        if self.PlatPresent(nom_plat):
+    def afficher_plat_complet(self, nom_plat) :
+        if self.plat_present(nom_plat):
             for plat in self.plats : 
-                if plat.Nom() == nom_plat :
+                if plat.donner_nom() == nom_plat :
                     print(f"{nom_plat} est composé de")
-                    for nom_ingredient, quantite_ingredient in plat.Ingredients() :
+                    for nom_ingredient, quantite_ingredient in plat.donner_ingredients() :
                         print(quantite_ingredient, nom_ingredient, end='')
 
-    def Afficher(self) :
-        if self.nbrPlats != 0 :
+    def afficher(self) :
+        if self.nbr_plats != 0 :
             print("Voici la liste complète des plats enregistrées (nom et ingrédients) :")
             for plat in self.plats :
-                print(f"{plat.Nom().capitalize()} a besoin de :")
-                for nom_ingredient, quantite_ingredient in plat.Ingredients() :
+                print(f"{plat.donner_nom().capitalize()} a besoin de :")
+                for nom_ingredient, quantite_ingredient in plat.donner_ingredients() :
                     print(quantite_ingredient, nom_ingredient)
 
 
-    def IngredientsPlat(self, nom_plat) :
-        if self.PlatPresent(nom_plat) :
-            for num_plat in range(self.nbrPlats) :
-                if self.plats[num_plat].Nom() == nom_plat :
-                    return self.plats[num_plat].Ingredients()
+    def donner_ingredients_plat(self, nom_plat) :
+        if self.plat_present(nom_plat) :
+            for num_plat in range(self.nbr_plats) :
+                if self.plats[num_plat].donner_nom() == nom_plat :
+                    return self.plats[num_plat].donner_ingredients()
                      
 
 

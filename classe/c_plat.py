@@ -1,37 +1,37 @@
 class Plat : 
     def __init__(self, nom, diff, ingredient):
-        self.nom = nom.lower()
+        self.nom = nom
         self.ingredients = ingredient
-        self.nbrPers = 2
+        self.nbr_pers = 2
         self.difficulte = diff
     
-    def AjouterIngredient(self, ingredient, quant) :
+    def ajouter_ingredient(self, ingredient, quant) :
         self.ingredients[ingredient] = quant
     
-    def ModQuantiteIng(self, ing, quant) :
+    def modifier_quantite_ingredient(self, ing, quant) :
         if ing in self.ingredients.keys() :
             self.ingredients[ing] = quant
         else : 
             print("Cet ingrédient n'est pas dans la liste des ingrédients")
 
-    def RetirerIngredient(self, ingredient) :
+    def retirer_ingredient(self, ingredient) :
         if ingredient in self.ingredients.keys() :
             del self.ingredients[ingredient]
 
-    def Nom(self) :
+    def donner_nom(self) :
         return self.nom
 
-    def CmbPers(self) :
-        return self.nbrPers
+    def combien_de_pers(self) :
+        return self.nbr_pers
     
-    def Ingredients(self) :
+    def donner_ingredients(self) :
         return self.ingredients.items()
     
-    def Difficulte(self) :
+    def donner_difficulte(self) :
         return self.difficulte
     
-    def Afficher(self) :
-        print(f" Nom : {self.nom} \n Pour : {self.nbrPers} personnes \n Difficulté : {self.difficulte} Ingrédients :")
+    def afficher(self) :
+        print(f" Nom : {self.nom} \n Pour : {self.nbr_pers} personnes \n Difficulté : {self.difficulte} Ingrédients :")
         for cle, valeur in self.ingredients.items() :
             print(cle, valeur)
     

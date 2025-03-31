@@ -1,105 +1,105 @@
 class MenuJour :
     def __init__ (self, j, p) :
-        self.jour = j.lower()
+        self.jour = j
         self.semaine = 1
-        self.plat = p.lower()
-        self.nbrPersonne = 2
+        self.plat = p
+        self.nbr_pers = 2
 
-    def ModifiierJour(self, jour) :
-        self.jour = jour.lower()
+    def modifier_jour(self, jour) :
+        self.jour = jour
     
-    def ModifierPlat(self, plat) :
-        self.plat = plat.lower()
+    def modifier_plat(self, plat) :
+        self.plat = plat
 
-    def ModifierNbrPersonne(self, nbr) :
-        self.nbrPersonne = nbr
+    def modifier_nbr_personnes(self, nbr) :
+        self.nbr_pers = nbr
 
-    def ModifierSemaine(self, s) :
+    def modifier_semaine(self, s) :
         self.semaine = s
     
-    def Afficher(self) :
-        print(f"{self.jour} de la semaine {self.semaine} : {self.plat} pour {self.nbrPersonne} personne.s.")
+    def afficher(self) :
+        print(f"{self.jour} de la semaine {self.semaine} : {self.plat} pour {self.nbr_pers} personne.s.")
 
-    def Contenu(self) :
-        return (self.jour, self.semaine, self.plat, self.nbrPersonne)
+    def donner_menu(self) :
+        return (self.jour, self.semaine, self.plat, self.nbr_pers)
     
-    def Date(self) :
+    def donner_date(self) :
         return (self.jour, self.semaine)
     
-    def Jour(self) :
+    def donner_jour(self) :
         return self.jour
     
-    def Semaine(self) :
+    def donner_semaine(self) :
         return self.semaine
     
-    def Repas(self) :
-        return (self.plat, self.nbrPersonne)
+    def donner_repas(self) :
+        return (self.plat, self.nbr_pers)
     
-    def Plat(self) :
+    def donner_plat(self) :
         return self.plat
 
 
 class Menu : 
     def __init__(self, nbr):
-        self.listeRepas = []
-        self.nbrRepas = 0
-        self.nbrTotalRepas = nbr
+        self.liste_repas = []
+        self.nbr_repas = 0
+        self.nbr_total_repas = nbr
         
-    def AjouterRepas(self, j, p) :
+    def ajouter_repas(self, j, p) :
 
-        if self.nbrRepas != self.nbrTotalRepas :
-            nouvMenu = MenuJour(j, p)
+        if self.nbr_repas != self.nbr_total_repas :
+            nouv_menu = MenuJour(j, p)
 
             #On gère la semaine du nouveau repas ajouté
-            if self.nbrRepas != 0 :
-                for repas in self.listeRepas :
-                    if repas.Date() == nouvMenu.Date() :
-                        nouvMenu.ModifierSemaine(nouvMenu.Semaine() + 1)
+            if self.nbr_repas != 0 :
+                for repas in self.liste_repas :
+                    if repas.donner_date() == nouv_menu.donner_date() :
+                        nouv_menu.modifier_semaine(nouv_menu.donner_semaine() + 1)
 
             #on ajoute le nouveau menu au Menu
-            self.listeRepas.append(nouvMenu)
-            self.nbrRepas += 1
+            self.liste_repas.append(nouv_menu)
+            self.nbr_repas += 1
 
-    def AjouterRepasPers(self, j, p, nbr) :
-        if self.nbrRepas != self.nbrTotalRepas :
-            nouvMenu = MenuJour(j, p)
+    def ajouter_repas_avec_pers(self, j, p, nbr) :
+        if self.nbr_repas != self.nbr_total_repas :
+            nouv_menu = MenuJour(j, p)
 
             #On gère la semaine du nouveau repas ajouté
-            if self.nbrRepas != 0 :
-                for repas in self.listeRepas :
-                    if repas.Date() == nouvMenu.Date() :
-                        nouvMenu.ModifierSemaine(nouvMenu.Semaine() + 1)
+            if self.nbr_repas != 0 :
+                for repas in self.liste_repas :
+                    if repas.donner_date() == nouv_menu.donner_date() :
+                        nouv_menu.modifier_semaine(nouv_menu.donner_semaine() + 1)
 
             #On gère le changement de nombre de personnes
-            nouvMenu.ModifierNbrPersonne(nbr)
+            nouv_menu.modifier_nbr_personnes(nbr)
 
             #on ajoute le nouveau menu au Menu
-            self.listeRepas.append(nouvMenu)
-            self.nbrRepas += 1
+            self.liste_repas.append(nouv_menu)
+            self.nbr_repas += 1
 
-    def RetirerRepas(self, repas) : 
-        for menu in self.listeRepas : 
-            if menu.Plat() == repas : 
-                self.listeRepas.remove(menu)   
-                self.nbrRepas -= 1        
+    def retirer_repas(self, repas) : 
+        for menu in self.liste_repas : 
+            if menu.donner_plat() == repas : 
+                self.liste_repas.remove(menu)   
+                self.nbr_repas -= 1        
 
-    def ListeRepas(self) :
-        return self.listeRepas
+    def donner_liste_repas(self) :
+        return self.liste_repas
 
-    def RepasManquant(self) :
-        return self.nbrTotalRepas - self.nbrRepas
+    def donner_nbr_repas_manquant(self) :
+        return self.nbr_total_repas - self.nbr_repas
     
-    def NbrRepas (self) :
-        return self.nbrRepas
+    def nbr_repas_menu (self) :
+        return self.nbr_repas
     
-    def ModifierNbrRepas(self, nbr) :
-        if self.nbrRepas <= nbr :
-            self.nbrTotalRepas = nbr 
+    def modifier_nbr_repas(self, nbr) :
+        if self.nbr_repas <= nbr :
+            self.nbr_total_repas = nbr 
     
-    def Afficher(self) :
-        print(f"Menu pour {self.nbrTotalRepas} repas, possède actuellement {self.nbrRepas} :")
+    def afficher(self) :
+        print(f"Menu pour {self.nbr_total_repas} repas, possède actuellement {self.nbr_repas} :")
 
-        for repas in self.listeRepas :
-            repas.Afficher()
+        for repas in self.liste_repas :
+            repas.afficher()
 
 
