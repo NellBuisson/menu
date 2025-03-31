@@ -2,8 +2,9 @@ from classe.c_listecourse import *
 from classe.c_menu import *
 from classe.c_listeplat import *
 
+semaine = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"]
 
-def RemplirCourseAvecMenu(menu, liste_de_course, liste_plat) :   
+def remplir_course_avec_menu(menu, liste_de_course, liste_plat) :   
     for repas in menu.ListeRepas() :
         plat, nbr_pers = repas.Repas()
         for ingredient_et_quantite in liste_plat.IngredientsPlat(plat) :
@@ -19,6 +20,17 @@ def RemplirCourseAvecMenu(menu, liste_de_course, liste_plat) :
     
     liste_de_course.Afficher()
     
+def ajouter_repas_au_menu(menu, jour, plat) :
+    if jour in semaine : 
+        menu.AjouterRepas(jour, plat)
+    else : 
+        print("Le jour noté n'existe pas")
+
+
+
+
+
+        
 
 menu_semaine = Menu(4)
 menu_semaine.AjouterRepas("Dimanche", "pate carbo")
@@ -30,5 +42,3 @@ liste_plat.AjouterPlat("poulet", {"poulet" : 1, "sauce" : 1})
 liste_plat.AjouterPlat("Riz au thon", {"thon" : 1, "tomate" : 1})
 liste_de_course = ListeCourse("auj")
 
-
-RemplirCourseAvecMenu(menu_semaine, liste_de_course, liste_plat)
