@@ -1,8 +1,9 @@
 class Plat : 
-    def __init__(self, nom, ingredient):
+    def __init__(self, nom, diff, ingredient):
         self.nom = nom.lower()
         self.ingredients = ingredient
         self.nbrPers = 2
+        self.difficulte = diff
     
     def AjouterIngredient(self, ingredient, quant) :
         self.ingredients[ingredient] = quant
@@ -26,8 +27,11 @@ class Plat :
     def Ingredients(self) :
         return self.ingredients.items()
     
+    def Difficulte(self) :
+        return self.difficulte
+    
     def Afficher(self) :
-        print(f" Nom : {self.nom} \n Pour : {self.nbrPers} personnes \n Ingrédients :")
+        print(f" Nom : {self.nom} \n Pour : {self.nbrPers} personnes \n Difficulté : {self.difficulte} Ingrédients :")
         for cle, valeur in self.ingredients.items() :
             print(cle, valeur)
     
